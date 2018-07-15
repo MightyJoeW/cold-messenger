@@ -7,16 +7,30 @@ import Footer from './components/Footer';
 import Form from "./components/Form";
 import RecruiterMessage from "./components/RecruiterMessage";
 
+// Material-UI Dependencies
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Paper from '@material-ui/core/Paper';
+
 // Local Variables
 const appStyles = {
   color: '#3d3c3c',
   fontFamily: 'sans-serif',
   margin: '0 auto',
-  width: '50%',
+  width: '90%',
 };
 
-const listStyles = {
-  listStyleType: 'none',
+const contentContainer = {
+  display: 'flex',
+}
+
+const formStyles = {
+}
+
+const messageStyles = {
+  padding: 15,
 }
 
 const titleStyles = {
@@ -123,34 +137,41 @@ export default class App extends Component {
 
     const messages = messagesArr.map(message => {
       return (
-        <div style={{ marginTop: 20 }}>
-          <li
+        <List style={messageStyles}>
+          <ListItem
             key={message.id}
-            style={listStyles}> {message}
-          </li>
-          <hr />
-        </div>
+          >
+            {message}
+          </ListItem>
+          <Divider />
+          <br />
+        </List>
       );
     })
 
     return (
       <div style={appStyles}>
+        <CssBaseline />
         <div style={titleStyles}>
           <h1>{siteTitle}</h1>
           <h3>Faster Networking. Less Typing.</h3>
         </div>
 
-        <Form
-          handleClick={this.handleClick}
-          handleChangeCompany={this.handleChangeCompany}
-          handleChangeName={this.handleChangeName}
-          handleChangeSchool={this.handleChangeSchool}
-          handleChangeProjectDescription={this.handleChangeProjectDescription}
-          handleChangeProjectLink={this.handleChangeProjectLink}
-          handleChangeProjectName={this.handleChangeProjectName}
-        />
-        <hr />
-        {messages}
+        <div style={contentContainer}>
+          <Form
+            style={formStyles}
+            handleClick={this.handleClick}
+            handleChangeCompany={this.handleChangeCompany}
+            handleChangeName={this.handleChangeName}
+            handleChangeSchool={this.handleChangeSchool}
+            handleChangeProjectDescription={this.handleChangeProjectDescription}
+            handleChangeProjectLink={this.handleChangeProjectLink}
+            handleChangeProjectName={this.handleChangeProjectName}
+          />
+          <Paper>
+            {messages}
+          </Paper>
+        </div>
         <Footer />
       </div>
     );

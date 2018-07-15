@@ -1,44 +1,73 @@
 // External Dependencies
 import React from "react";
 
+// Material-UI Dependencies
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import SubmitButton from './SubmitButton';
+import TextField from '@material-ui/core/TextField';
+
+// Local Variables
 const formStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+  marginRight: 30,
   paddingBottom: 10,
+  width: '50%',
 }
 
 // Component Definition
 const Form = props => (
   <form style={formStyles}>
-    <label>
-      Name:&nbsp;
-      <input type="text" onChange={props.handleChangeName} />
+    <FormControl>
+      <InputLabel>Name:&nbsp;</InputLabel>
+      <Input htmlFor="name" id="name" value={props.name} onChange={props.handleChangeName} />
+      <FormHelperText id="name-helper-text">The name of the person you are writing to.</FormHelperText>
       <br />
-    </label>
-    <label>
-      Company:&nbsp;
-      <input type="text" onChange={props.handleChangeCompany} />
+    </FormControl>
+
+    <FormControl>
+      <InputLabel>Company:&nbsp;</InputLabel>
+      <Input htmlFor="company" type="text" onChange={props.handleChangeCompany} />
+      <FormHelperText id="name-helper-text">The company this person works for.</FormHelperText>
       <br />
-    </label>
-    <label>
-      School:&nbsp;
-      <input type="text" onChange={props.handleChangeSchool} />
+    </FormControl>
+
+    <FormControl>
+      <InputLabel>School:&nbsp;</InputLabel>
+      <Input htmlFor="school" type="text" onChange={props.handleChangeSchool} />
+      <FormHelperText id="name-helper-text">The school this person graduated from.</FormHelperText>
       <br />
-    </label>
-    <label>
-      Project Name:&nbsp;
-      <input type="text" onChange={props.handleChangeProjectName} />
+    </FormControl>
+
+    <FormControl>
+      <InputLabel>Project Name:&nbsp;</InputLabel>
+      <Input htmlFor="projectName" type="text" onChange={props.handleChangeProjectName} />
+      <FormHelperText id="name-helper-text">The name of your best project.</FormHelperText>
       <br />
-    </label>
-    <label>
-      Project Link:&nbsp;
-      <input type="text" onChange={props.handleChangeProjectLink} />
+    </FormControl>
+
+    <FormControl>
+      <InputLabel>Project Link:&nbsp;</InputLabel>
+      <Input htmlFor="school" type="text" onChange={props.handleChangeProjectLink} />
+      <FormHelperText id="name-helper-text">The link to your best project.</FormHelperText>
       <br />
-    </label>
-    <label>
-      Project Description:&nbsp;
-      <textarea rows="4" cols="50" onChange={props.handleChangeProjectDescription} />
+    </FormControl>
+
+    <FormControl>
+      <TextField
+        id="projDesc"
+        label="Project Description"
+        value={props.name}
+        onChange={props.handleChangeProjectDescription}
+        margin="normal"
+      />
+      <FormHelperText id="name-helper-text">The link to your best project.</FormHelperText>
       <br />
-    </label>
-    <button onClick={props.handleClick}>Submit</button>
+    </FormControl>
+    <SubmitButton />
   </form>
 );
 
