@@ -19,6 +19,21 @@ const Form = props => (
       <input type="text" onChange={props.handleChangeSchool} />
       <br />
     </label>
+    <label>
+      Project Name:
+      <input type="text" onChange={props.handleChangeProjectName} />
+      <br />
+    </label>
+    <label>
+      Project Link:
+      <input type="text" onChange={props.handleChangeProjectLink} />
+      <br />
+    </label>
+    <label>
+      Project Description:
+      <input type="text" onChange={props.handleChangeProjectDescription} />
+      <br />
+    </label>
     <button onClick={props.handleClick}>Submit</button>
   </form>
 );

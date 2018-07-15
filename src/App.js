@@ -23,12 +23,25 @@ export default class App extends Component {
       devCompany: null,
       devName: null,
       devSchool: null,
-      isSameSchool: false
+      isSameSchool: false,
+      projectDescription: "Fitness tracker web app that provides visualization for Fitbit data. Fittr.us also includes social features and a badging system along with a timer & stopwatch for workouts.",
+      projectLink: "https://github.com/FitTracker/Fitness-Goal-Tracker",
+      projectName: "Fittr.us",
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeSchool = this.handleChangeSchool.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
+    this.handleChangeName = this.handleChangeName.bind(this);
+    this.handleChangeProjectDescription = this.handleChangeProjectDescription.bind(this);
+    this.handleChangeProjectLink = this.handleChangeProjectLink.bind(this);
+    this.handleChangeProjectName = this.handleChangeProjectName.bind(this);
+    this.handleChangeSchool = this.handleChangeSchool.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleChangeCompany(e) {
+    this.setState({
+      devCompany: e.target.value
+    });
+    console.log(e.target.value);
   }
 
   handleChangeName(e) {
@@ -38,16 +51,30 @@ export default class App extends Component {
     console.log(e.target.value);
   }
 
-  handleChangeSchool(e) {
+  handleChangeProjectName(e) {
     this.setState({
-      devSchool: e.target.value
+      projectName: e.target.value
     });
     console.log(e.target.value);
   }
 
-  handleChangeCompany(e) {
+  handleChangeProjectDescription(e) {
     this.setState({
-      devCompany: e.target.value
+      projectDescription: e.target.value
+    });
+    console.log(e.target.value);
+  }
+
+  handleChangeProjectLink(e) {
+    this.setState({
+      projectLink: e.target.value
+    });
+    console.log(e.target.value);
+  }
+
+  handleChangeSchool(e) {
+    this.setState({
+      devSchool: e.target.value
     });
     console.log(e.target.value);
   }
@@ -62,19 +89,36 @@ export default class App extends Component {
   }
 
   render() {
-    const { devCompany, devName, devSchool, isSameSchool } = this.state;
+    const {
+      devCompany,
+      devName,
+      devSchool,
+      projectName,
+      projectDescription,
+      projectLink,
+      isSameSchool
+    } = this.state;
 
     return (
       <div style={styles}>
         <Form
           handleClick={this.handleClick}
+          handleChangeCompany={this.handleChangeCompany}
           handleChangeName={this.handleChangeName}
           handleChangeSchool={this.handleChangeSchool}
-          handleChangeCompany={this.handleChangeCompany}
+          handleChangeProjectDescription={this.handleChangeProjectDescription}
+          handleChangeProjectLink={this.handleChangeProjectLink}
+          handleChangeProjectName={this.handleChangeProjectName}
         />
         <DevMessage devName={devName} devCompany={devCompany} />
         <hr />
-        <RecruiterMessage devName={devName} devCompany={devCompany} />
+        <RecruiterMessage
+          devName={devName}
+          devCompany={devCompany}
+          projectDescription={projectDescription}
+          projectLink={projectLink}
+          projectName={projectName}
+        />
       </div>
     );
   }
