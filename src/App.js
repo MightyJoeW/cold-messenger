@@ -19,6 +19,7 @@ const appStyles = {
   color: '#3d3c3c',
   fontFamily: 'sans-serif',
   margin: '0 auto',
+  overflowY: 'hidden',
   width: '90%',
 };
 
@@ -26,11 +27,13 @@ const contentContainer = {
   display: 'flex',
 }
 
-const formStyles = {
-}
-
 const messageStyles = {
   padding: 15,
+}
+
+const paperStyles = {
+  maxHeight: 600,
+  overflowY: 'scroll',
 }
 
 const titleStyles = {
@@ -159,7 +162,6 @@ export default class App extends Component {
 
         <div style={contentContainer}>
           <Form
-            style={formStyles}
             handleClick={this.handleClick}
             handleChangeCompany={this.handleChangeCompany}
             handleChangeName={this.handleChangeName}
@@ -168,7 +170,7 @@ export default class App extends Component {
             handleChangeProjectLink={this.handleChangeProjectLink}
             handleChangeProjectName={this.handleChangeProjectName}
           />
-          <Paper>
+          <Paper style={paperStyles}>
             {messages}
           </Paper>
         </div>
