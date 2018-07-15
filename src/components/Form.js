@@ -1,5 +1,7 @@
+// External Dependencies
 import React from "react";
 
+// Component Definition
 const Form = props => (
   <form>
     <label>
