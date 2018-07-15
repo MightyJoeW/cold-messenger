@@ -1,36 +1,40 @@
 // External Dependencies
 import React from "react";
 
+const formStyles = {
+  paddingBottom: 10,
+}
+
 // Component Definition
 const Form = props => (
-  <form>
+  <form style={formStyles}>
     <label>
-      Name:
+      Name:&nbsp;
       <input type="text" onChange={props.handleChangeName} />
       <br />
     </label>
     <label>
-      Company:
+      Company:&nbsp;
       <input type="text" onChange={props.handleChangeCompany} />
       <br />
     </label>
     <label>
-      School:
+      School:&nbsp;
       <input type="text" onChange={props.handleChangeSchool} />
       <br />
     </label>
     <label>
-      Project Name:
+      Project Name:&nbsp;
       <input type="text" onChange={props.handleChangeProjectName} />
       <br />
     </label>
     <label>
-      Project Link:
+      Project Link:&nbsp;
       <input type="text" onChange={props.handleChangeProjectLink} />
       <br />
     </label>
     <label>
-      Project Description:
+      Project Description:&nbsp;
       <textarea rows="4" cols="50" onChange={props.handleChangeProjectDescription} />
       <br />
     </label>

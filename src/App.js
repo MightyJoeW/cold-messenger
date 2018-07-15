@@ -1,20 +1,26 @@
 //External Dependencies
 import React, { Component } from "react";
 
-//Local Dependencies
-import Form from "./components/Form";
+//Internal Dependencies
 import DevMessage from "./components/DevMessage";
+import Footer from './components/Footer';
+import Form from "./components/Form";
 import RecruiterMessage from "./components/RecruiterMessage";
 
 // Local Variables
-const styles = {
+const appStyles = {
+  color: '#3d3c3c',
+  fontFamily: 'sans-serif',
   margin: '0 auto',
-  fontFamily: "sans-serif",
-  width: '80%',
+  width: '50%',
 };
 
 const listStyles = {
   listStyleType: 'none',
+}
+
+const titleStyles = {
+  textAlign: 'center',
 }
 
 // const school = sameSchool ? sameSchool : 'software engineering';
@@ -31,6 +37,7 @@ export default class App extends Component {
       projectDescription: "Fitness tracker web app that provides visualization for Fitbit data. Fittr.us also includes social features and a badging system along with a timer & stopwatch for workouts",
       projectLink: "https://github.com/FitTracker/Fitness-Goal-Tracker",
       projectName: "Fittr.us",
+      siteTitle: "LinkedIn Cold Message Creator",
     };
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
     this.handleChangeName = this.handleChangeName.bind(this);
@@ -91,10 +98,11 @@ export default class App extends Component {
       devCompany,
       devName,
       devSchool,
-      projectName,
+      isSameSchool,
       projectDescription,
       projectLink,
-      isSameSchool
+      projectName,
+      siteTitle,
     } = this.state;
 
     const messagesArr = [
@@ -116,17 +124,22 @@ export default class App extends Component {
     const messages = messagesArr.map(message => {
       return (
         <div style={{ marginTop: 20 }}>
-          <hr />
           <li
             key={message.id}
             style={listStyles}> {message}
           </li>
+          <hr />
         </div>
       );
     })
 
     return (
-      <div style={styles}>
+      <div style={appStyles}>
+        <div style={titleStyles}>
+          <h1>{siteTitle}</h1>
+          <h3>Faster Networking. Less Typing.</h3>
+        </div>
+
         <Form
           handleClick={this.handleClick}
           handleChangeCompany={this.handleChangeCompany}
@@ -136,7 +149,9 @@ export default class App extends Component {
           handleChangeProjectLink={this.handleChangeProjectLink}
           handleChangeProjectName={this.handleChangeProjectName}
         />
+        <hr />
         {messages}
+        <Footer />
       </div>
     );
   }
