@@ -31,7 +31,7 @@ const Form = props => (
     </label>
     <label>
       Project Description:
-      <input type="text" onChange={props.handleChangeProjectDescription} />
+      <textarea rows="4" cols="50" onChange={props.handleChangeProjectDescription} />
       <br />
     </label>
     <button onClick={props.handleClick}>Submit</button>

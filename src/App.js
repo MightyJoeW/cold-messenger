@@ -13,6 +13,10 @@ const styles = {
   width: '80%',
 };
 
+const listStyles = {
+  listStyleType: 'none',
+}
+
 // const school = sameSchool ? sameSchool : 'software engineering';
 
 //Component Definition
@@ -24,7 +28,7 @@ export default class App extends Component {
       devName: null,
       devSchool: null,
       isSameSchool: false,
-      projectDescription: "Fitness tracker web app that provides visualization for Fitbit data. Fittr.us also includes social features and a badging system along with a timer & stopwatch for workouts.",
+      projectDescription: "Fitness tracker web app that provides visualization for Fitbit data. Fittr.us also includes social features and a badging system along with a timer & stopwatch for workouts",
       projectLink: "https://github.com/FitTracker/Fitness-Goal-Tracker",
       projectName: "Fittr.us",
     };
@@ -41,42 +45,36 @@ export default class App extends Component {
     this.setState({
       devCompany: e.target.value
     });
-    console.log(e.target.value);
   }
 
   handleChangeName(e) {
     this.setState({
       devName: e.target.value
     });
-    console.log(e.target.value);
   }
 
   handleChangeProjectName(e) {
     this.setState({
       projectName: e.target.value
     });
-    console.log(e.target.value);
   }
 
   handleChangeProjectDescription(e) {
     this.setState({
       projectDescription: e.target.value
     });
-    console.log(e.target.value);
   }
 
   handleChangeProjectLink(e) {
     this.setState({
       projectLink: e.target.value
     });
-    console.log(e.target.value);
   }
 
   handleChangeSchool(e) {
     this.setState({
       devSchool: e.target.value
     });
-    console.log(e.target.value);
   }
 
   handleClick(e) {
@@ -99,6 +97,34 @@ export default class App extends Component {
       isSameSchool
     } = this.state;
 
+    const messagesArr = [
+      <DevMessage
+        devName={devName}
+        devCompany={devCompany}
+        id={0}
+      />,
+      <RecruiterMessage
+        devName={devName}
+        devCompany={devCompany}
+        id={1}
+        projectDescription={projectDescription}
+        projectLink={projectLink}
+        projectName={projectName}
+      />
+    ]
+
+    const messages = messagesArr.map(message => {
+      return (
+        <div style={{ marginTop: 20 }}>
+          <hr />
+          <li
+            key={message.id}
+            style={listStyles}> {message}
+          </li>
+        </div>
+      );
+    })
+
     return (
       <div style={styles}>
         <Form
@@ -110,15 +136,7 @@ export default class App extends Component {
           handleChangeProjectLink={this.handleChangeProjectLink}
           handleChangeProjectName={this.handleChangeProjectName}
         />
-        <DevMessage devName={devName} devCompany={devCompany} />
-        <hr />
-        <RecruiterMessage
-          devName={devName}
-          devCompany={devCompany}
-          projectDescription={projectDescription}
-          projectLink={projectLink}
-          projectName={projectName}
-        />
+        {messages}
       </div>
     );
   }
