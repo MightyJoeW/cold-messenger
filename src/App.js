@@ -8,7 +8,6 @@ import Form from "./components/Form";
 import RecruiterMessage from "./components/RecruiterMessage";
 
 // Material-UI Dependencies
-import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -63,7 +62,7 @@ export default class App extends Component {
     this.handleChangeProjectLink = this.handleChangeProjectLink.bind(this);
     this.handleChangeProjectName = this.handleChangeProjectName.bind(this);
     this.handleChangeSchool = this.handleChangeSchool.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChangeCompany(e) {
@@ -102,13 +101,14 @@ export default class App extends Component {
     });
   }
 
-  handleClick(e) {
+  handleSubmit(e) {
     e.preventDefault();
     this.setState({
       devName: this.state.devName,
       devSchool: this.state.devSchool,
       devCompany: this.state.devCompany
     });
+    console.log('Updated Name, School, and Company.')
   }
 
   render() {
@@ -163,7 +163,7 @@ export default class App extends Component {
 
         <div style={contentContainer}>
           <Form
-            handleClick={this.handleClick}
+            handleSubmit={this.handleSubmit}
             handleChangeCompany={this.handleChangeCompany}
             handleChangeName={this.handleChangeName}
             handleChangeSchool={this.handleChangeSchool}

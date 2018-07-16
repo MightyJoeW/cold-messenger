@@ -69,7 +69,7 @@ const Form = props => (
       <FormHelperText id="name-helper-text">The link to your best project.</FormHelperText>
       <br />
     </FormControl>
-    <SubmitButton />
+    <SubmitButton handleSubmit={props.handleSubmit} />
   </Paper>
 );
 
