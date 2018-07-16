@@ -8,6 +8,7 @@ import Form from "./components/Form";
 import RecruiterMessage from "./components/RecruiterMessage";
 
 // Material-UI Dependencies
+import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';

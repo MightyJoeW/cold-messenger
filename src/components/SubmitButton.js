@@ -19,7 +19,7 @@ function TextButtons(props) {
   const { classes } = props;
   return (
     <div>
-      <Button color="primary" className={classes.button}>
+      <Button color="primary" className={classes.button} variant="raised">
         Submit
       </Button>
     </div>
