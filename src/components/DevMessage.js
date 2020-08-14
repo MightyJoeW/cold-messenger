@@ -3,7 +3,7 @@ import React from 'react';
 
 //Component Definition
 const DevMessage = props => (
-  <div>
+  <section>
     <h2> Dev Message </h2>
     <p>Hi {props.devName},</p>
     <p>Thanks for accepting my request!</p>
@@ -23,7 +23,7 @@ const DevMessage = props => (
       Thanks,<br />
       Joe
     </p>
-  </div>
+  </section>
 )
 
 export default DevMessage;
