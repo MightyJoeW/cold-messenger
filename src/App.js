@@ -56,7 +56,7 @@ const App = () => {
   const [siteTitle, setSiteTitle] = useState('LinkedIn Cold Message Creator')
 
   const handleChangeCompany = e => setDevCompany(e.target.value)
-  const handleChangeName = e => setDevCompany(e.target.value)
+  const handleChangeName = e => setDevName(e.target.value)
   const handleChangeProjectName = e => setProjectName(e.target.value)
   const handleChangeProjectDescription = e => setProjectDescription(e.target.value)
   const handleChangeProjectLink = e => setProjectLink(e.target.value)
