@@ -8,7 +8,7 @@ const footerStyles = {
 
 // Component Definition
 const Footer = () => (
-  <div style={footerStyles}>
+  <footer style={footerStyles}>
     <p>
       Questions? Feedback? Tweet&nbsp;
       <a
@@ -18,7 +18,7 @@ const Footer = () => (
         @MightyJoeW
       </a>
     </p>
-  </div>
+  </footer>
 )
 
 export default Footer;

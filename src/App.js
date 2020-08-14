@@ -1,5 +1,5 @@
 //External Dependencies
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 //Internal Dependencies
 import DevMessage from "./components/DevMessage";
@@ -24,7 +24,7 @@ const appStyles = {
 };
 
 const contentContainer = {
-  display: 'flex',
+  display: 'flex'
 }
 
 const messageStyles = {
@@ -42,141 +42,86 @@ const titleStyles = {
 
 // const school = sameSchool ? sameSchool : 'software engineering';
 
+const defaultProjectDescription = "Fitness tracker web app that provides visualization for Fitbit data. Fittr.us also includes social features and a badging system along with a timer & stopwatch for workouts"
+
 //Component Definition
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      devCompany: null,
-      devName: null,
-      devSchool: null,
-      isSameSchool: false,
-      projectDescription: "Fitness tracker web app that provides visualization for Fitbit data. Fittr.us also includes social features and a badging system along with a timer & stopwatch for workouts",
-      projectLink: "https://github.com/FitTracker/Fitness-Goal-Tracker",
-      projectName: "Fittr.us",
-      siteTitle: "LinkedIn Cold Message Creator",
-    };
-    this.handleChangeCompany = this.handleChangeCompany.bind(this);
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeProjectDescription = this.handleChangeProjectDescription.bind(this);
-    this.handleChangeProjectLink = this.handleChangeProjectLink.bind(this);
-    this.handleChangeProjectName = this.handleChangeProjectName.bind(this);
-    this.handleChangeSchool = this.handleChangeSchool.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const App = () => {
+  const [devCompany, setDevCompany] = useState('N/A')
+  const [devName, setDevName] = useState('N/A')
+  const [devSchool, setDevSchool] = useState('N/A')
+  const [isSameSchool, setIsSameSchool] = useState(false)
+  const [projectDescription, setProjectDescription] = useState(defaultProjectDescription)
+  const [projectLink, setProjectLink] = useState('https://github.com/FitTracker/Fitness-Goal-Tracker')
+  const [projectName, setProjectName] = useState('Fittr.us')
+  const [siteTitle, setSiteTitle] = useState('LinkedIn Cold Message Creator')
 
-  handleChangeCompany(e) {
-    this.setState({
-      devCompany: e.target.value
-    });
-  }
+  const handleChangeCompany = e => setDevCompany(e.target.value)
+  const handleChangeName = e => setDevCompany(e.target.value)
+  const handleChangeProjectName = e => setProjectName(e.target.value)
+  const handleChangeProjectDescription = e => setProjectDescription(e.target.value)
+  const handleChangeProjectLink = e => setProjectLink(e.target.value)
+  const handleChangeSchool = e => setDevSchool(e.target.value)
 
-  handleChangeName(e) {
-    this.setState({
-      devName: e.target.value
-    });
-  }
-
-  handleChangeProjectName(e) {
-    this.setState({
-      projectName: e.target.value
-    });
-  }
-
-  handleChangeProjectDescription(e) {
-    this.setState({
-      projectDescription: e.target.value
-    });
-  }
-
-  handleChangeProjectLink(e) {
-    this.setState({
-      projectLink: e.target.value
-    });
-  }
-
-  handleChangeSchool(e) {
-    this.setState({
-      devSchool: e.target.value
-    });
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = e => {
     e.preventDefault();
-    this.setState({
-      devName: this.state.devName,
-      devSchool: this.state.devSchool,
-      devCompany: this.state.devCompany
-    });
+    setDevName(devName)
+    setDevSchool(devSchool)
+    setDevCompany(devCompany)
     console.log('Updated Name, School, and Company.')
   }
 
-  render() {
-    const {
-      devCompany,
-      devName,
-      devSchool,
-      isSameSchool,
-      projectDescription,
-      projectLink,
-      projectName,
-      siteTitle,
-    } = this.state;
+  const messagesArr = [
+    <DevMessage
+      devName={devName}
+      devCompany={devCompany}
+      id={0}
+    />,
+    <RecruiterMessage
+      devName={devName}
+      devCompany={devCompany}
+      id={1}
+      projectDescription={projectDescription}
+      projectLink={projectLink}
+      projectName={projectName}
+    />
+  ]
 
-    const messagesArr = [
-      <DevMessage
-        devName={devName}
-        devCompany={devCompany}
-        id={0}
-      />,
-      <RecruiterMessage
-        devName={devName}
-        devCompany={devCompany}
-        id={1}
-        projectDescription={projectDescription}
-        projectLink={projectLink}
-        projectName={projectName}
-      />
-    ]
-
-    const messages = messagesArr.map(message => {
-      return (
-        <List style={messageStyles}>
-          <ListItem
-            key={message.id}
-          >
-            {message}
-          </ListItem>
-          <Divider />
-          <br />
-        </List>
-      );
-    })
-
+  const messages = messagesArr.map(message => {
     return (
-      <div style={appStyles}>
-        <CssBaseline />
-        <div style={titleStyles}>
-          <h1>{siteTitle}</h1>
-          <h3>Faster Networking. Less Typing.</h3>
-        </div>
-
-        <div style={contentContainer}>
-          <Form
-            handleSubmit={this.handleSubmit}
-            handleChangeCompany={this.handleChangeCompany}
-            handleChangeName={this.handleChangeName}
-            handleChangeSchool={this.handleChangeSchool}
-            handleChangeProjectDescription={this.handleChangeProjectDescription}
-            handleChangeProjectLink={this.handleChangeProjectLink}
-            handleChangeProjectName={this.handleChangeProjectName}
-          />
-          <Paper style={paperStyles}>
-            {messages}
-          </Paper>
-        </div>
-        <Footer />
-      </div>
+      <List key={message.id} style={messageStyles}>
+        <ListItem>
+          {message}
+        </ListItem>
+        <Divider />
+      </List>
     );
-  }
+  })
+
+  return (
+    <div style={appStyles}>
+      <CssBaseline />
+      <header style={titleStyles}>
+        <h1>{siteTitle}</h1>
+        <h3>Faster Networking. Less Typing.</h3>
+      </header>
+
+      <div style={contentContainer}>
+        <Form
+          handleSubmit={handleSubmit}
+          handleChangeCompany={handleChangeCompany}
+          handleChangeName={handleChangeName}
+          handleChangeSchool={handleChangeSchool}
+          handleChangeProjectDescription={handleChangeProjectDescription}
+          handleChangeProjectLink={handleChangeProjectLink}
+          handleChangeProjectName={handleChangeProjectName}
+        />
+        <Paper style={paperStyles}>
+          {messages}
+        </Paper>
+      </div>
+      <Footer />
+    </div>
+  );
 }
+
+export default App;
