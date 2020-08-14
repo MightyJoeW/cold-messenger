@@ -3,7 +3,7 @@ import React from 'react';
 
 //Component Definition
 const RecruiterMessage = props => (
-  <div>
+  <section>
     <h2> Recruiter Message </h2>
     <p>Hi {props.devName},</p>
     <p>
@@ -24,7 +24,7 @@ const RecruiterMessage = props => (
       Thanks,<br />
       Joe
     </p>
-  </div>
+  </section>
 )
 
 export default RecruiterMessage;

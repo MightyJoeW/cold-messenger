@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Paper from '@material-ui/core/Paper';
 import SubmitButton from './SubmitButton';
 import TextField from '@material-ui/core/TextField';
 
@@ -14,22 +15,23 @@ const formStyles = {
   display: 'flex',
   flexDirection: 'column',
   marginRight: 30,
-  paddingBottom: 10,
+  maxHeight: 600,
+  paddingLeft: 15,
   width: '50%',
 }
 
 // Component Definition
 const Form = props => (
-  <form style={formStyles}>
+  <Paper style={formStyles}>
     <FormControl>
-      <InputLabel>Name:&nbsp;</InputLabel>
-      <Input htmlFor="name" id="name" value={props.name} onChange={props.handleChangeName} />
+      <InputLabel required>Name:&nbsp;</InputLabel>
+      <Input autoFocus htmlFor="name" id="name" value={props.name} onChange={props.handleChangeName} />
       <FormHelperText id="name-helper-text">The name of the person you are writing to.</FormHelperText>
       <br />
     </FormControl>
 
     <FormControl>
-      <InputLabel>Company:&nbsp;</InputLabel>
+      <InputLabel required>Company:&nbsp;</InputLabel>
       <Input htmlFor="company" type="text" onChange={props.handleChangeCompany} />
       <FormHelperText id="name-helper-text">The company this person works for.</FormHelperText>
       <br />
@@ -67,8 +69,8 @@ const Form = props => (
       <FormHelperText id="name-helper-text">The link to your best project.</FormHelperText>
       <br />
     </FormControl>
-    <SubmitButton />
-  </form>
+    <SubmitButton handleSubmit={props.handleSubmit} />
+  </Paper>
 );
 
 export default Form;
