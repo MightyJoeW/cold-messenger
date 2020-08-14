@@ -24,7 +24,7 @@ const appStyles = {
 };
 
 const contentContainer = {
-  display: 'flex',
+  display: 'flex'
 }
 
 const messageStyles = {
@@ -88,14 +88,11 @@ const App = () => {
 
   const messages = messagesArr.map(message => {
     return (
-      <List style={messageStyles}>
-        <ListItem
-          key={message.id}
-        >
+      <List key={message.id} style={messageStyles}>
+        <ListItem>
           {message}
         </ListItem>
         <Divider />
-        <br />
       </List>
     );
   })

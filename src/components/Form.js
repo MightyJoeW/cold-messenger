@@ -16,7 +16,7 @@ const formStyles = {
   flexDirection: 'column',
   marginRight: 30,
   maxHeight: 600,
-  padding: 15,
+  paddingLeft: 15,
   width: '50%',
 }
 

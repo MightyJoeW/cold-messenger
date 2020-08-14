@@ -1,31 +1,29 @@
 // External Dependencies
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Material-UI Dependencies
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      marginBottom: theme.spacing(1),
+    },
   },
-  input: {
-    display: 'none',
-  },
-});
+}));
 
-function TextButtons(props) {
-  const { classes } = props;
+const SubmitButton = props => {
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <Button
         color="primary"
         className={classes.button}
         onClick={props.handleSubmit}
         type="submit"
         value="Submit"
-        variant="raised"
+        variant="contained"
       >
         Submit
       </Button>
@@ -33,8 +31,4 @@ function TextButtons(props) {
   );
 }
 
-TextButtons.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(TextButtons);
+export default SubmitButton;
